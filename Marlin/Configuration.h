@@ -723,9 +723,9 @@
     #define DEFAULT_KI_LIST {   1.08,   1.08 }
     #define DEFAULT_KD_LIST { 114.00, 114.00 }
   #else
-    #define DEFAULT_KP  17.78
-    #define DEFAULT_KI   1.23
-    #define DEFAULT_KD  64.47
+    #define DEFAULT_KP  19.38
+    #define DEFAULT_KI   1.38
+    #define DEFAULT_KD  67.88
   #endif
 #else
   #define BANG_MAX 255    // Limit hotend current while in bang-bang mode; 255=full current
@@ -821,11 +821,10 @@
                               // Get the power from the temperature report ('M105' => B@:nnn) and try P*2-20 to P*2-10.
   //#define PID_BED_DEBUG     // Print Bed PID debug data to the serial port. Use 'M303 D' to enable/disable.
 
-  // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
-  // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_BED_KP  182.57
-  #define DEFAULT_BED_KI   23.96
-  #define DEFAULT_BED_KD 347.74
+  // Tevo Tarantula stock bed with 3mm glass cover, using Marlin auto-tune
+  #define DEFAULT_BED_KP  70.0
+  #define DEFAULT_BED_KI  14.0
+  #define DEFAULT_BED_KD 350.0
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #else
@@ -922,8 +921,8 @@
   #define PID_FUNCTIONAL_RANGE 20 // If the temperature difference between the target temperature and the actual temperature
                                   // is more than PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
 
-  //#define PID_EDIT_MENU         // Add PID editing to the "Advanced Settings" menu. (~700 bytes of flash)
-  //#define PID_AUTOTUNE_MENU     // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of flash)
+  #define PID_EDIT_MENU         // Add PID editing to the "Advanced Settings" menu. (~700 bytes of flash)
+  #define PID_AUTOTUNE_MENU     // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of flash)
 #endif
 
 // @section safety
@@ -1339,7 +1338,7 @@
  *   Z_STEPS = 1600 for stock lead screw
  *   E0_STEPS = 402 for stock extruder after calibration
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 1600, 402 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 1600, 418 }
 
 /**
  * Enable support for M92. Disable to save at least ~530 bytes of flash.
